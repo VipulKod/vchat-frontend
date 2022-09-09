@@ -1,0 +1,83 @@
+.register-container {
+  background-image: linear-gradient(
+    to right bottom,
+    rgb(94, 240, 226),
+    rgb(78, 150, 252)
+  );
+  height: 100vh;
+  width: 100%;
+}
+
+.bg-container {
+  position: absolute;
+  right: 50px;
+  bottom: 40px;
+  width: 400px;
+
+  img {
+    width: 100%;
+  }
+}
+
+.logo-container {
+  width: 160px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+
+  img {
+    width: 100%;
+  }
+}
+
+@media (max-width: 400px) {
+  .card-position {
+    width: 80% !important;
+  }
+
+  .place-card {
+    position: absolute;
+    transform: translate(6%, 40%);
+    -ms-transform: translate(6%, 40%);
+    -webkit-transform: translate(6%, 40%);
+    z-index: 1;
+    width: 90% !important;
+  }
+
+  .bg-container {
+    position: absolute;
+    right: 75px;
+    bottom: 10px;
+    width: 200px;
+  }
+
+  .logo-container {
+    width: 110px;
+    position: absolute;
+    top: 0px;
+    left: 35%;
+  }
+}
+
+@media (min-width: 400px) {
+  .card-position {
+    width: 80%;
+  }
+
+  .place-card {
+    position: absolute;
+    transform: translate(10%, 40%);
+    z-index: 1;
+  }
+}
+
+@media (min-width: 800px) {
+  .card-position {
+    width: 50%;
+  }
+
+  .place-card {
+    position: absolute;
+    transform: translate(50%, 50%);
+  }
+}

@@ -1,0 +1,43 @@
+<app-navbar></app-navbar>
+
+<div class="d-flex flex-column justify-content-center align-items-center">
+  <div
+    class="image-container d-flex justify-content-center align-items-center mx-0 my-2"
+  >
+    <img
+      id="blah"
+      [src]="imageSrc || 'assets/PngItem_800090-min.png' | sanitizeUrl"
+      alt="your image"
+    />
+  </div>
+  <div class="my-4 d-flex align-items-center justify-content-center">
+    <h2>{{ userData?.username }}</h2>
+  </div>
+</div>
+
+<div class="d-flex justify-content-center align-items-center">
+  <h5 class="px-4">Update Image:</h5>
+  <input
+    type="file"
+    id="file"
+    class="ml-4"
+    #userPhoto
+    (change)="readURL($event)"
+    name="image"
+    autocomplete="off"
+  />
+</div>
+
+<div class="d-flex flex-column justify-content-center align-items-center my-4">
+  <h3>Your Bio</h3>
+  <div class="form-group w-50">
+    <textarea
+      class="form-control"
+      id="exampleFormControlTextarea1"
+      rows="5"
+      [(ngModel)]="userBio"
+      name="userBio"
+    ></textarea>
+  </div>
+  <button class="btn btn-app my-4" (click)="updateUser()">Update</button>
+</div>

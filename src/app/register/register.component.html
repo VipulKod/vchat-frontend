@@ -1,0 +1,110 @@
+<div class="register-container container-fluid">
+  <div class="logo-container">
+    <img src="assets/vchat_connect.png" alt="">
+  </div>
+
+  <div class="error-msg-container w-100 d-flex justify-content-center" *ngIf="errorMsg">
+    <div class="alert alert-danger w-50" role="alert">
+      <div class="d-flex justify-content-between">
+        <label>{{ errorMsg }}</label>
+
+        <div class="icon">
+          <i class="fa-solid fa-xmark" (click)="closeError()"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="card shadow card-position p-4 place-card">
+    <div class="mx-auto">
+      <h3 class="text-primary">Register with us</h3>
+    </div>
+    <div class="card-content">
+      <form [formGroup]="registerForm" (ngSubmit)="registerUser()">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Username</label>
+          <input
+            type="text"
+            class="form-control"
+            id="register_username"
+            formControlName="username"
+            aria-describedby="usernameHelp"
+            placeholder="Enter username"
+          />
+        </div>
+        <small
+          class="text-danger"
+          *ngIf="
+            registerForm?.get('username')?.hasError('required') &&
+            registerForm?.get('username')?.touched
+          "
+          >* Please enter your username</small
+        >
+        <div class="form-group my-2">
+          <label for="exampleInputEmail1">Email address</label>
+          <input
+            type="email"
+            class="form-control"
+            id="register_email"
+            aria-describedby="emailHelp"
+            formControlName="email"
+            placeholder="Enter email"
+          />
+          <small
+            class="text-danger"
+            *ngIf="
+              registerForm?.get('email')?.hasError('required') &&
+              registerForm?.get('email')?.touched
+            "
+            >* Please enter your email</small
+          >
+
+          <small
+            class="text-danger"
+            *ngIf="registerForm?.get('email')?.hasError('email')"
+            >Please enter valid email address</small
+          >
+        </div>
+        <div class="form-group my-2">
+          <label for="exampleInputPassword1">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="register_password"
+            formControlName="password"
+            placeholder="Password"
+          />
+          <small
+            class="text-danger"
+            *ngIf="
+              registerForm?.get('password')?.hasError('required') &&
+              registerForm?.get('password')?.touched
+            "
+            >* Please enter your password</small
+          >
+        </div>
+        <p>
+          Don't have an account?
+          <a (click)="navigate()" class="link cursor-pointer">Login</a>
+        </p>
+        <div class="text-center">
+          <button
+            [disabled]="!registerForm.valid"
+            type="submit"
+            class="mx-auto"
+            class="btn btn-primary"
+          >
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  <div class="bg-container">
+    <img src="assets/undraw_explore_re_8l4v.svg" alt="">
+  </div>
+
+</div>

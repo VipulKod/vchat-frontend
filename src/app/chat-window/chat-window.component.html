@@ -1,0 +1,131 @@
+<ng-container *ngIf="totalUsers <= 1">
+  <div class="container">
+    <div class="row">
+      <div class="col-1 col-md-2"></div>
+      <div
+        class="col-10 col-md-8 d-flex justify-content-center align-items-center mt-4 flex-column"
+      >
+        <img
+          src="assets/undraw_coffee_re_x35h.svg"
+          style="width: 80%"
+          alt="image"
+        />
+        <h4 class="my-4 text-theme">
+          Looks like you are alone here, while you wait have a cup of coffee.
+        </h4>
+      </div>
+      <div class="col-1 col-md-2"></div>
+    </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="totalUsers > 1">
+  <div
+    class="h-100 d-flex align-items-center justify-content-center flex-column image-container"
+    *ngIf="isNoChat && !selectedUser"
+  >
+    <ng-container>
+      <img [src]="'assets/undraw_messaging_fun_re_vic9.svg'" alt="image" />
+    </ng-container>
+
+    <p class="text-theme">Select a user to start your conversation with</p>
+  </div>
+
+  <div
+    class="d-flex justify-content-center align-items-center h-90"
+    *ngIf="isNoChat && selectedUser"
+  >
+    <img [src]="'assets/Say_Hi.png'" alt="png say hi" />
+  </div>
+
+  <div
+    *ngIf="!isNoChat"
+    class="chat-container my-3"
+    #chatScroll
+    id="chatScroll"
+  >
+    <ul class="list-unstyled">
+      <ng-container *ngFor="let userChat of showChat">
+        <div class="container-left">
+          <li
+            class="d-flex mb-4 left-container"
+            *ngIf="userChat.sender !== userData?._id"
+          >
+            <img
+              [src]="selectedUserImg || 'assets/PngItem_800090-min.png'"
+              alt="avatar"
+              class="rounded-circle d-flex align-self-start mx-1 user-img"
+            />
+
+            <div class="card shadow-sm receiver-card w-100">
+              <div class="card-header d-flex justify-content-between p-3">
+                <p class="small color-lite mb-0">
+                  {{ userChat.time | date: "MMM d, y, h:mm:ss a" }}
+                </p>
+              </div>
+              <div class="card-body">
+                <div class="receiver-container">
+                  <p class="color-lite mb-0">{{ userChat.text }}</p>
+                </div>
+              </div>
+            </div>
+          </li>
+        </div>
+
+        <div class="container-right d-flex justify-content-end">
+          <li
+            class="d-flex mb-4 right-container"
+            *ngIf="userChat.sender === userData?._id"
+          >
+            <div class="card shadow-sm sender-card">
+              <div class="card-header d-flex justify-content-between p-3">
+                <!-- <p class="fw-bold mb-0">{{ userChat.username }}</p> -->
+                <p class="small mb-0">
+                  {{ userChat.time | date: "MMM d, y, h:mm:ss a" }}
+                </p>
+              </div>
+              <div class="card-body">
+                <div class="sender-container">
+                  <p class="mb-0">{{ userChat.text }}</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="avatar-img mx-3">
+              <img
+                [src]="userImg || 'assets/PngItem_800090-min.png'"
+                alt="avatar"
+                class="rounded-circle d-flex align-self-start mx-1 user-img"
+                width="60"
+              />
+            </div>
+          </li>
+        </div>
+      </ng-container>
+    </ul>
+  </div>
+
+  <ng-container *ngIf="!isNoChat || selectedUser">
+    <div class="m-3">
+      <div class="form-outline d-flex">
+        <input
+          class="form-control shadow input-theme mx-2 py-2"
+          id="textAreaExample2"
+          placeholder="Enter your message here"
+          [(ngModel)]="message"
+          #Message="ngModel"
+          name="message"
+          (keydown)="detectKeyPress($event)"
+          autocomplete="off"
+        />
+        <button
+          type="button"
+          class="btn btn-app shadow float-end"
+          (click)="sendMessage()"
+        >
+          Send
+        </button>
+      </div>
+    </div>
+  </ng-container>
+</ng-container>

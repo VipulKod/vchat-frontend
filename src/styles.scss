@@ -1,0 +1,68 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~@fortawesome/fontawesome-free/css/fontawesome.min.css";
+
+:root {
+  --theme-1: #5383fc;
+  --theme-2: #393ffc;
+  --text-lite: #ffffff;
+  --text-dark: #000000;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.theme-bg {
+  background-image: linear-gradient(to right, var(--theme-1), var(--theme-2));
+}
+
+.btn.btn-app {
+  background-image: linear-gradient(
+    to right top,
+    var(--theme-1),
+    var(--theme-2)
+  );
+  border: 1px solid var(--theme-2);
+  color: var(--text-lite);
+  transition: 200ms ease-in-out;
+}
+
+.btn.btn-app:hover {
+  transform: scale(1.02);
+  border: 1px solid var(--theme-1);
+}
+
+.input-theme {
+  border: 1px solid var(--theme-1);
+}
+
+.color-lite {
+  color: var(--text-lite);
+}
+
+.text-theme {
+  color: var(--theme-1);
+}
+
+.emoji-mart {
+  position: absolute;
+  left: 0px;
+  top: -340px;
+  cursor: pointer;
+}
+
+.emoji-btn {
+  background: transparent;
+  border: 0;
+  position: relative;
+  top: 33px;
+  left: 5px;
+  z-index: 1;
+  transform: scale(1.5);
+  cursor: pointer;
+}
+
+.emoji-btn > i {
+  color: rgb(104, 104, 104);
+}

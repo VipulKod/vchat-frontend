@@ -1,0 +1,90 @@
+<div class="register-container">
+  <div class="logo-container">
+    <img src="assets/vchat_connect.png" alt="" />
+  </div>
+
+  <div class="card shadow card-position p-4 place-card">
+    <div class="w-100 d-flex justify-content-center" *ngIf="errorMsg">
+      <div class="alert alert-danger" role="alert">
+        <div class="d-flex justify-content-between">
+          <label>{{ errorMsg }}</label>
+
+          <div class="icon d-flex align-items-center icon">
+            <i class="fa-solid fa-xmark" (click)="closeError()"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mx-auto">
+      <h3 class="text-primary">Login</h3>
+    </div>
+    <div class="card-content">
+      <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
+        <div class="form-group my-2">
+          <label for="exampleInputEmail1">Email address</label>
+          <input
+            type="email"
+            class="form-control"
+            id="register_email"
+            aria-describedby="emailHelp"
+            formControlName="email"
+            placeholder="Enter email"
+          />
+          <small
+            class="text-danger"
+            *ngIf="
+              loginForm?.get('email')?.hasError('required') &&
+              loginForm?.get('email')?.touched
+            "
+            >* Please enter your email</small
+          >
+
+          <small
+            class="text-danger"
+            *ngIf="loginForm?.get('email')?.hasError('email')"
+            >Please enter valid email address</small
+          >
+        </div>
+        <div class="form-group my-2">
+          <label for="exampleInputPassword1">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="register_password"
+            formControlName="password"
+            placeholder="Password"
+          />
+          <small
+            class="text-danger"
+            *ngIf="
+              loginForm?.get('password')?.hasError('required') &&
+              loginForm?.get('password')?.touched
+            "
+            >* Please enter your password</small
+          >
+        </div>
+        <div>
+          <p>
+            Don't have an account?
+            <a (click)="navigate()" class="link cursor-pointer">Register</a>
+          </p>
+        </div>
+        <div class="text-center">
+          <button
+            [disabled]="!loginForm.valid"
+            type="submit"
+            class="mx-auto"
+            class="btn btn-primary"
+          >
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="bg-container">
+    <img src="assets/undraw_social_networking_re_i1ex.svg" alt="" />
+  </div>
+</div>

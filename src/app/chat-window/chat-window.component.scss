@@ -1,0 +1,71 @@
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  width: 5px;
+  background: #f5f5f5;
+}
+
+::-webkit-scrollbar-thumb {
+  width: 1em;
+  background-color: #ddd;
+  outline: 1px solid slategrey;
+  border-radius: 1rem;
+}
+
+.text-small {
+  font-size: 0.9rem;
+}
+
+.messages-box,
+.chat-box {
+  height: 510px;
+  overflow-y: scroll;
+}
+
+.rounded-lg {
+  border-radius: 0.5rem;
+}
+
+input::placeholder {
+  font-size: 0.9rem;
+  color: #999;
+}
+
+.chat-container {
+  height: 88vh !important;
+  overflow: auto;
+}
+
+.left-container,
+.right-container {
+  max-width: 60%;
+}
+
+.container-right {
+  width: 100%;
+}
+
+.h-90 {
+  height: 90% !important;
+}
+
+.image-container > img {
+  width: 70%;
+}
+.receiver-card {
+  width: auto !important;
+  background-image: linear-gradient(to right top, #1f33ee, rgb(20, 189, 255));
+  border-radius: 25px;
+}
+
+.sender-card {
+  background-color: #d7ffe6;
+  border-radius: 25px;
+}
+
+.user-img {
+  height: 50px;
+  width: 50px;
+}
